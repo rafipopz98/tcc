@@ -9,11 +9,6 @@ const Footer = () => {
           CREW
         </h1>
       </div>
-
-      <div className="relative z-10 text-yellow-400 font-handwritten text-5xl md:text-9xl uppercase rotate-[-4deg] text-center leading-tight">
-        <p>Never Go</p>
-        <p>Extinct</p>
-      </div>
     </section>
   );
 };
