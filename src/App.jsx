@@ -1,36 +1,32 @@
-import LocomotiveScroll from "locomotive-scroll";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import Showcase from "./components/Showcase";
-import OurWork from "./components/OurWork";
-import Projects from "./components/Projects";
-import Footer from "./components/Footer";
-import Socials from "./components/Socials";
-import MatchesSection from "./components/MatchesSection";
-import StandingsSection from "./components/StandingSection";
+
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import MainLayout from "./layouts/MainLayout";
+import Polls from "./pages/Polls";
+import About from "./pages/About";
 
 const App = () => {
   useEffect(() => {
     const scroll = new LocomotiveScroll({
       smooth: true,
     });
-    return scroll.destroy();
+
+    return () => scroll.destroy();
   }, []);
+
   return (
-    // <div className="bg-[url('/bg.jpeg')] bg-cover bg-center min-h-screen">
-    <>
-      <Navbar />
-      <HeroSection />
-      <MatchesSection />
-      <StandingsSection />
-      <OurWork />
-      <Projects />
-      <Socials />
-      <Footer />
-    </>
-    // </div>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/polls" element={<Polls />} />
+        <Route path="/about-us" element={<About />} />
+      </Route>
+    </Routes>
   );
 };
 
